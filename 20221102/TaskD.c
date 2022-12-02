@@ -6,15 +6,16 @@ int main()
     {
         if(i % 15 == 0)
         {
-            printf("%d fizz buzz\n",i);
+            cout<< "fizzbuzz" << i << "\n";
         }
         else if(i % 3 == 0)
         {
-            printf("%d fizz\n",i);
+            cout<< "fizz" << i << "\n";
         }
         else if(i % 5 == 0)
         {
-           printf("%d buzz\n",i);
+           cout<< "buzz" << i << "\n";
         }
     }
+    return 0;
 }
