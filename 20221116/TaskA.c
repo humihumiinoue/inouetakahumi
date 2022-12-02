@@ -7,78 +7,73 @@
 typedef struct QUEUE {
     /* データの最後尾 */
     int tail;
-    /* キューされているデータ */
+    /* スタックされているデータ */
     int data[MAX_NUM];
-} QUEUE_T;
+} STACK_T;
 
-void initQueue(QUEUE_T*);
-void printQueue(QUEUE_T*);
-void enqueue(QUEUE_T*, int);
-int dequeue(QUEUE_T*);
+void initStack(STACK_T*);
+void printStack(STACK_T*);
+void push(STACK_T*, int);
+int pop(STACK_T*);
 
-/* キューを初期化する関数 */
-void initQueue(QUEUE_T *queue){
+/* stackを初期化する関数 */
+void initStack(STACK_T *stack){
 
-    /* キューを空に設定 */
-    queue->tail = -1;
+    /* stackを空に設定 */
+    stack->tail = -1;
 }
 
-/* ENQUEUEする関数 */
-void enqueue(QUEUE_T *queue, int input){
+/* pushする関数 */
+void push(STACK_T *stack, int input){
 
-    /* キューが満杯なら何もせず関数終了 */
-    if(queue->tail == MAX_NUM - 1){
-        printf("キューが満杯でENQUEUEできません\n");
+    /*stackが満杯なら何もせず関数終了 */
+    if(stack->tail == MAX_NUM - 1){
+        printf("キューが満杯でPUSHできません\n");
         return;
     }
 
     /* データをデータの最後尾の１つ後ろに格納 */
-    queue->data[queue->tail + 1] = input;
+    stack->data[stack->tail + 1] = input;
 
     /* データの最後尾を１つ後ろに移動 */
-    queue->tail = queue->tail + 1;
+    stack->tail = stack->tail + 1;
 }
 
-/* DEQUEUEする関数 */
-int dequeue(QUEUE_T *queue){
+/* popする関数 */
+int pop(STACK_T *stack){
     int ret = 0;
-    int i;
 
-    /* キューが空なら何もせずに関数終了 */
-    if(queue->tail == -1){
-        printf("キューが空です\n");
+    /* stackが空なら何もせずに関数終了 */
+    if(stack->tail == -1){
+        printf("stackが空です\n");
         return -1;
     }
 
     /* データの先頭からデータを取得 */
-    ret = queue->data[0];
+    ret = stack->data[stack->tail];
 
-    /* データの先頭より後ろのデータを１つずつ前にずらす */
-    for (i = 0; i < queue->tail; i++) {
-        queue->data[i] = queue->data[i + 1];
-    }
-
-    /* データの最後尾も１つ前にずらす */
-    queue->tail = queue->tail - 1;
+    /* データの末尾を１つずつ前にずらす */
+    stack->tail = stack->tail -1;
 
     /* 取得したデータを返却 */
     return ret;
 }
 
 /* キューの中身を表示 */
-void printQueue(QUEUE_T *queue){
+void printStack(STACK_T *stack)
+{
     int i = 0;
     
-    printf("左側がキューの出口側を表しています\n");
-    for(i = 0; i <= queue->tail; i++){
-        printf("%d,", queue->data[i]);
+    printf("左側がstackの上側を表しています\n");
+    for(i = 0; i <= stack -> tail; i++){
+        printf("%d", stack->data[stack -> tail - i]);
     }
     printf("\n");
 }
 
 int main(void){
 
-    QUEUE_T queue;
+    STACK_T stack;
     int output;
     int pushnaum1 = 1;
     int pushnaum3 = 3;
@@ -87,25 +82,25 @@ int main(void){
     int pushnaum9 = 9;
 
     /* キューを初期化 */
-    initQueue(&queue);
+    initStack(&stack);
 
-        enqueue(&queue, pushnaum1);
-        printf("%dをENQUEUEします\n", pushnaum1);
-        enqueue(&queue, pushnaum3);
-        printf("%dをENQUEUEします\n", pushnaum3);
-        enqueue(&queue, pushnaum5);
-        printf("%dをENQUEUEします\n", pushnaum5);
-        enqueue(&queue, pushnaum7);
-        printf("%dをENQUEUEします\n", pushnaum7);
-        enqueue(&queue, pushnaum9);
-        printf("%dをENQUEUEします\n", pushnaum9);
+        push(&stack, pushnaum1);
+        printf("%dをpushします\n", pushnaum1);
+        push(&stack, pushnaum3);
+        printf("%dをpushします\n", pushnaum3);
+        push(&stack, pushnaum5);
+        printf("%dをpushします\n", pushnaum5);
+        push(&stack, pushnaum7);
+        printf("%dをpushします\n", pushnaum7);
+        push(&stack, pushnaum9);
+        printf("%dをpushします\n", pushnaum9);
 
 
         
-        output = dequeue(&queue);
-        printf("%dをDEQUEUEしました\n", output);
-        output = dequeue(&queue);
-        printf("%dをDEQUEUEしました\n", output);
+        output = pop(&stack);
+        printf("%dをpopしました\n", output);
+        output = pop(&stack);
+        printf("%dをpopしました\n", output);
     
         return 0;
 }
