@@ -10,7 +10,8 @@ int main()
     int target = 50;
     int result = -1;
     int left = 0;
-    right = hundred - 1;
+    int right = hundred - 1;
+    int valueA,valueB,max,nim;
 
     for(int n = 0; n < hundred; n++)
     {
@@ -19,9 +20,9 @@ int main()
 
     for(int i = 0; i < hundred; i++)
     {
-        for(int j = ransuu - 1; j >= n + 1; --j)
+        for(int j = hundred - 1; j >= i + 1; --j)
         {
-            valueA = data[n];
+            valueA = data[i];
             valueB = data[j];
 
             if(valueA > valueB)
@@ -29,10 +30,41 @@ int main()
                 max = valueA;
                 nim = valueB;
 
-                data[n] = nim;
+                data[i] = nim;
                 data[j] = max;
             }
         }
     
     }
+
+    while(left < right)
+    {
+        int mid = (left + right) / 2;
+
+        if(data[mid] == target)
+        {
+            result = mid;
+            break;
+        }
+        else if(data[mid] < target)
+        {
+            left = mid + 1;
+            break;
+        }
+        else
+        {
+            right = mid;
+            break;
+        }
+    }
+        if(result >= 0)
+        {
+            printf("index for target is %d",result);
+        }
+        else
+        {
+            printf("target is none");
+        }
+    
+    return 0;
 }
