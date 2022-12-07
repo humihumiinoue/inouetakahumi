@@ -4,7 +4,7 @@
 #define MAX_NUM (5)
 
 /* キュー構造体 */
-typedef struct QUEUE {
+typedef struct stack {
     /* データの最後尾 */
     int tail;
     /* スタックされているデータ */
@@ -85,22 +85,59 @@ int main(void){
     initStack(&stack);
 
         push(&stack, pushnaum1);
-        printf("%dをpushします\n", pushnaum1);
+        for(int i = 0; i <= stack.tail; i++)
+        {
+            if(stack.data[i] != NULL)
+                printf("%d\n", stack.data[i]);
+        }
+        printf("\n");
+
         push(&stack, pushnaum3);
-        printf("%dをpushします\n", pushnaum3);
+        for(int i = 0; i <= stack.tail; i++)
+        {
+            if(stack.data[i] != NULL)
+                printf("%d\n", stack.data[i]);
+        }
+        printf("\n");
+
         push(&stack, pushnaum5);
-        printf("%dをpushします\n", pushnaum5);
+        for(int i = 0; i <= stack.tail; i++)
+        {
+            if(stack.data[i] != NULL)
+                printf("%d\n", stack.data[i]);
+        }
+        printf("\n");
+
         push(&stack, pushnaum7);
-        printf("%dをpushします\n", pushnaum7);
+        for(int i = 0; i <= stack.tail; i++)
+        {
+            if(stack.data[i] != NULL)
+                printf("%d\n", stack.data[i]);
+        }
+        printf("\n");
+
         push(&stack, pushnaum9);
-        printf("%dをpushします\n", pushnaum9);
+        for(int i = 0; i <= stack.tail; i++)
+        {
+            if(stack.data[i] != NULL)
+                printf("%d\n", stack.data[i]);
+        }
+        printf("\n");
 
+        output = pop(&stack);
+        for(int i = 0; i <= stack.tail; i++)
+        {
+            if(stack.data[i] != NULL)
+                printf("%d\n", stack.data[i]);
+        }
+        printf("\n");
 
+        output = pop(&stack);
+        for(int i = 0; i <= stack.tail; i++)
+        {
+            if(stack.data[i] != NULL)
+                printf("%d\n", stack.data[i]);
+        }
         
-        output = pop(&stack);
-        printf("%dをpopしました\n", output);
-        output = pop(&stack);
-        printf("%dをpopしました\n", output);
-    
         return 0;
 }

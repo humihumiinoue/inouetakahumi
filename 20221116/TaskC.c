@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<string.h>
 
 /* 管理するデータの上限個数 */
 #define MAX_NUM (5)
@@ -92,27 +93,67 @@ int main(void){
     initQueue(&queue);
 
         enqueue(&queue, pushnaum1);
-        printf("%dをENQUEUEします\n", pushnaum1);
+        for(int i = 0; i <= queue.tail; i++)
+        {
+            if(queue.data[i] != NULL)
+                printf("%d\n", queue.data[i]);
+        }
+        printf("\n");
         enqueue(&queue, pushnaum3);
-        printf("%dをENQUEUEします\n", pushnaum3);
+        for(int i = 0; i <= queue.tail; i++)
+        {
+            if(queue.data[i] != NULL)
+                printf("%d\n", queue.data[i]);
+        }
+        printf("\n");
         enqueue(&queue, pushnaum5);
-        printf("%dをENQUEUEします\n", pushnaum5);
+        for(int i = 0; i <= queue.tail; i++)
+        {
+            if(queue.data[i] != NULL)
+                printf("%d\n", queue.data[i]);
+        }
+        printf("\n");
         enqueue(&queue, pushnaum7);
-        printf("%dをENQUEUEします\n", pushnaum7);
+        for(int i = 0; i <= queue.tail; i++)
+        {
+            if(queue.data[i] != NULL)
+                printf("%d\n", queue.data[i]);
+        }
+        printf("\n");
         enqueue(&queue, pushnaum9);
-        printf("%dをENQUEUEします\n", pushnaum9);
-
-
+        for(int i = 0; i <= queue.tail; i++)
+        {
+            if(queue.data[i] != NULL)
+                printf("%d\n", queue.data[i]);
+        }
+        printf("\n");
         output = dequeue(&queue);
-        printf("%dをDEQUEUEしました\n", output);
+        for(int i = 0; i <= queue.tail; i++)
+        {
+            if(queue.data[i] != NULL)
+                printf("%d\n", queue.data[i]);
+        }
+        printf("\n");
         output = dequeue(&queue);
-        printf("%dをDEQUEUEしました\n", output);
-
-
+        for(int i = 0; i <= queue.tail; i++)
+        {
+            if(queue.data[i] != NULL)
+                printf("%d\n", queue.data[i]);
+        }
+        printf("\n");
         enqueue(&queue, pushnaum2);
-        printf("%dをENQUEUEします\n", pushnaum2);
+        for(int i = 0; i <= queue.tail; i++)
+        {
+        if(queue.data[i] != NULL)
+        printf("%d\n", queue.data[i]);
+        }
+        printf("\n");
         enqueue(&queue, pushnaum4);
-        printf("%dをENQUEUEします\n", pushnaum4);
+        for(int i = 0; i <= queue.tail; i++)
+        {
+        if(queue.data[i] != NULL)
+        printf("%d\n", queue.data[i]);
+        }
     
         return 0;
 }
