@@ -1,0 +1,92 @@
+vector
+
+可変長配列C++のみ
+配列の要素数を手短に変更できるようになる
+
+#include<vector>
+
+std::vector<型名>変数名{要素1,要素2,要素3};
+
+srd::vector<std::vector<型名>>変数名(要素数,std::vector<型名>(要素数));
+
+<要素の取得>
+std::vector<int>vec{1,2,3};
+std::cout<<vec[1]<<std::endl;
+vec.front()//先頭
+vec.back()//末尾
+vec.size()//要素数
+vec.empty()//空かどうかtrue  false
+
+for文でアクセス
+for(int i = 0; i < vec.size(); i++)
+
+for(auto& value : vec)
+{
+std::cout<<value<<std::endl;
+}
+
+型推論ーーauto
+ソースコードから型を自動で考えてくれる
+
+イテレーターーーiterator
+std::vector<型名>::iterator 変数名;
+
+//参照
+*itr;
+
+//参照変更
+++itr;
+--itr;
+
+std::vector<int>vec{1,2,3};
+for(auto it = vec.begin(); it != vec.end(); ++i)
+std::cout<< *it <<std::endl;
+
+//要素の追加
+std::vector<int>vec;
+
+vec.emplace_back(1);//末尾に追加
+vec.emplace_back(2);//1,2
+
+//挿入
+std::vector<int>vec{1,2,3};
+vec.insert(vec.begin() + 1, 99); // 1,99,2,3
+
+//二つのベクターを融合する
+std::vector<int> vec1{1,2,3};
+std::vector<int> vec1{4,5,6};
+
+//位置・開始位置・終了位置
+vec1.insert(vec1.begin() + 1,vec2.begin(),vec2.end());
+//1,4,5,6,2,3
+
+//要素の削除
+vec.erase(vec.begin() + 2);
+vec.erase(vec.begin() + 1, vec.end() - 1);
+//引数１つ目から２つ目まで消す
+
+vec.clear()//全消去
+
+//要素の入れ替え
+vec1.swap(vec2);
+
+//要素数の変更
+vec.resize(5);//1,2,3,0,0
+
+//変更しつつ初期値の指定
+vec.resize(5,99);//1,2,3,99,99
+
+//要素の置換
+vec.assign(9,5)//9,9,9,9,9
+vec.assign({9,8,7,6,6})//9,8,7,6,6,5
+vec3.assign(vec2.begin() + 1, vec2.end() - 1);
+
+//メモリについて
+vec.reserve(100000);//メモリを確保
+
+std::<<vec.capacity()<<std::endl;//メモリの容量の確認
+
+for(int i = 0; i < 100000; i++)
+	vec.emplace_back(i);
+
+vec.shrink_to_fit();//不要なメモリを解放

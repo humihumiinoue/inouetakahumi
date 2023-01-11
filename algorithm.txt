@@ -1,0 +1,6 @@
+探索(algorithm)
+std::find(1,2,name);
+//1,2の間でnameを探す
+
+ソート
+sort(1,2);
